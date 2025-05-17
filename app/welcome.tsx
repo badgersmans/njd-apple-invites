@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { BlurView } from 'expo-blur';
 import { useState } from 'react';
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 
 const events = [
   {
@@ -48,15 +49,18 @@ export default function welcome() {
   }
 
   return (
-    <View className='flex-1 bg-green-300'>
-      <Image 
+    <View className='flex-1'>
+      <Animated.Image
+        key={events[activeIndex].image}
         source={events[activeIndex].image} 
         className='absolute top-0 left-0 h-full w-full' 
         resizeMode='cover'
+        entering={FadeIn.duration(1500)}
+        exiting={FadeOut.duration(1500)}
       />
       <View className='absolute top-0 left-0 h-full w-full bg-black/50'/>
 
-      <BlurView intensity={0} className='flex-1'>
+      <BlurView intensity={100} className='flex-1'>
         <SafeAreaView>
           <View className='h-[64%] w-full'>
             {/* Marquee component */}
