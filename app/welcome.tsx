@@ -45,7 +45,7 @@ export default function welcome() {
 
   const onButtonPress = () => {
     setActiveIndex(activeIndex >= events.length - 1 ? 0 : activeIndex + 1)
-    console.log('create an evjent...')
+    console.log('create an event...')
   }
 
   return (
@@ -66,7 +66,7 @@ export default function welcome() {
             {/* Marquee component */}
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               {events.map((event) => (
-                <View className='h-full w-96 p-5' key={event.id}>
+                <View className='h-full w-96 p-5 shadow-md' key={event.id}>
                   <Image source={event.image} className='h-full w-full rounded-3xl'/>
                 </View>
               ))}
